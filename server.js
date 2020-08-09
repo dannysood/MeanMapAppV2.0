@@ -13,19 +13,24 @@ var app             = express();
 // -----------------------------------------------------
 // Sets the connection to MongoDB
 const userBuffer = new Buffer.from(process.env.DATABASE_USER, 'base64')
-const user = userBuffer.toString();
+const user = userBuffer.toString('ascii');
 const passwordBuffer = new Buffer.from(process.env.DATABASE_PASSWORD, 'base64')
-const password = passwordBuffer.toString();
+const password = passwordBuffer.toString('ascii');
 const hostBuffer = new Buffer.from(process.env.DATABASE_HOST, 'base64')
-const host = hostBuffer.toString();
+const host = hostBuffer.toString('ascii');
 const dbnameBuffer = new Buffer.from(process.env.DATABASE_NAME, 'base64')
-const dbname = dbnameBuffer.toString();
+const dbname = dbnameBuffer.toString('ascii');
 const portBuffer = new Buffer.from(process.env.DATABASE_PORT, 'base64')
-const dbport = portBuffer.toString();
+const dbport = portBuffer.toString('ascii');
 console.log("###############@@@@@@@@@@@@@@@@@@@@@@@@@", {
     name: "MongoDB Service",
     url: "mongodb://" + user + ":" + password + "@" + host + "/" + dbname,
     port: dbport
+});
+console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$", {
+    name: "MongoDB Service",
+    url: "mongodb://" + process.env.DATABASE_USER + ":" + process.env.DATABASE_PASSWORD + "@" + process.env.DATABASE_HOST + "/" + process.env.DATABASE_NAME,
+    port: process.env.DATABASE_PORT
 });
 
 mongoose.connect(database.bitnami.url);
