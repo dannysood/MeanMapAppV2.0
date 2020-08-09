@@ -21,11 +21,11 @@ const host = hostBuffer.toString('ascii');
 const dbnameBuffer = new Buffer(process.env.DATABASE_NAME, 'base64')
 const dbname = dbnameBuffer.toString('ascii');
 const portBuffer = new Buffer(process.env.DATABASE_PORT, 'base64')
-const port = portBuffer.toString('ascii');
+const dbport = portBuffer.toString('ascii');
 console.log("###############@@@@@@@@@@@@@@@@@@@@@@@@@", {
     name: "MongoDB Service",
     url: "mongodb://" + user + ":" + password + "@" + host + "/" + dbname,
-    port: port
+    port: dbport
 });
 
 mongoose.connect(database.bitnami.url);
