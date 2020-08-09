@@ -12,16 +12,16 @@ var app             = express();
 // Express Configuration
 // -----------------------------------------------------
 // Sets the connection to MongoDB
-const userBuffer = new Buffer(process.env.DATABASE_USER, 'base64')
-const user = userBuffer.toString('ascii');
-const passwordBuffer = new Buffer(process.env.DATABASE_PASSWORD, 'base64')
-const password = passwordBuffer.toString('ascii');
-const hostBuffer = new Buffer(process.env.DATABASE_HOST, 'base64')
-const host = hostBuffer.toString('ascii');
-const dbnameBuffer = new Buffer(process.env.DATABASE_NAME, 'base64')
-const dbname = dbnameBuffer.toString('ascii');
-const portBuffer = new Buffer(process.env.DATABASE_PORT, 'base64')
-const dbport = portBuffer.toString('ascii');
+const userBuffer = new Buffer.from(process.env.DATABASE_USER, 'base64')
+const user = userBuffer.toString();
+const passwordBuffer = new Buffer.from(process.env.DATABASE_PASSWORD, 'base64')
+const password = passwordBuffer.toString();
+const hostBuffer = new Buffer.from(process.env.DATABASE_HOST, 'base64')
+const host = hostBuffer.toString();
+const dbnameBuffer = new Buffer.from(process.env.DATABASE_NAME, 'base64')
+const dbname = dbnameBuffer.toString();
+const portBuffer = new Buffer.from(process.env.DATABASE_PORT, 'base64')
+const dbport = portBuffer.toString();
 console.log("###############@@@@@@@@@@@@@@@@@@@@@@@@@", {
     name: "MongoDB Service",
     url: "mongodb://" + user + ":" + password + "@" + host + "/" + dbname,
